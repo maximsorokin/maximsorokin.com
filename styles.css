@@ -1,7 +1,7 @@
-/* Inter подключён локально: внешний запрос к CDN задерживает первую отрисовку
-   и тянет стороннего провайдера. Страница латинская, поэтому подключён только
-   латинский субсет — unicode-range оставлен, чтобы браузер не качал шрифт
-   ради символов, которых в нём нет. */
+/* Inter is self-hosted: a CDN request delays the first paint and drags in a
+   third party. The page is latin-only, so only the latin subset ships —
+   unicode-range is kept so the browser skips the file for characters it
+   doesn't cover. */
 @font-face {
 	font-family: 'Inter';
 	font-style: normal;
@@ -35,7 +35,8 @@
 	--color-text: #000000;
 	--color-accent: #006aff;
 
-	/* Тёмной темы в макете нет — браузер не должен инвертировать цвета сам. */
+	/* The design has no dark theme — the browser shouldn't invert colors on
+	   its own. */
 	color-scheme: light;
 }
 
@@ -60,8 +61,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Отступы контейнера — padding, а не margin: на высоком экране контент
-   центрируется, на низком отступы не схлопываются и появляется скролл. */
+/* Container spacing is padding, not margin: on a tall screen the content
+   centers, on a short one the gaps don't collapse and the page scrolls. */
 .page {
 	display: flex;
 	align-items: flex-start;
@@ -146,8 +147,9 @@ a:focus-visible {
 		line-height: normal;
 	}
 
-	/* Ширина абзаца из макета. max-width — страховка для окон уже 1044px,
-	   где 764px уже не помещаются между отступами по 140px. */
+	/* Paragraph width from the design. max-width is a fallback for windows
+	   narrower than 1044px, where 764px no longer fits between the 140px
+	   paddings. */
 	.about {
 		margin-top: 28px;
 		width: 764px;

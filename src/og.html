@@ -1,0 +1,105 @@
+<!doctype html>
+<!--
+	Исходник og.jpg — картинки для превью ссылки. На хостинг не заливается:
+	всё, что лежит в src/, по адресу сайта доступно быть не должно.
+
+	Меняется должность или компания — правится текст ниже, картинка
+	пересобирается двумя командами из корня репозитория:
+
+	"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+		--headless=new --disable-gpu --hide-scrollbars \
+		--force-device-scale-factor=1 --allow-file-access-from-files \
+		--screenshot=src/og.png --window-size=1200,630 "file://$PWD/src/og.html"
+
+	sips -s format jpeg -s formatOptions 90 src/og.png --out og.jpg
+
+	Проверить после пересборки: 1200×630, вес в районе 55–60 КБ. Если текст
+	стал длиннее или короче, посмотреть глазами на поля — блок центрируется
+	автоматически, но кегли зафиксированы и под ширину не подстраиваются.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/inter-400-latin.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/inter-500-latin.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/inter-700-latin.woff2') format('woff2');
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+	width: 1200px;
+	height: 630px;
+	background: #ffffff;
+	color: #000000;
+	font-family: 'Inter';
+	-webkit-font-smoothing: antialiased;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+/* Блок центрируется по типографическому боксу — от верха капители до базовой
+   линии последней строки, — плюс 14px вниз: масса композиции наверху, поэтому
+   воздуха сверху должно быть чуть больше, чем снизу. */
+.block {
+	width: 100%;
+	padding: 0 100px;
+	position: relative;
+	top: 14px;
+}
+
+/* Кегли крупнее, чем на самой странице: в ленте мессенджера картинка
+   показывается сильно уменьшенной. Синий — тот же --color-accent. */
+.name {
+	margin: 0;
+	font-size: 106px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.02em;
+}
+
+.role {
+	margin: 14px 0 0;
+	font-size: 50px;
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.role span {
+	color: #006aff;
+}
+
+.prev {
+	margin: 46px 0 0;
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 1.4;
+}
+</style>
+</head>
+<body>
+	<div class="block">
+		<div class="name">maxim sorokin</div>
+		<div class="role">head of design at <span>dzen</span></div>
+		<div class="prev">previously — vk, citymobil, alfa-bank, rambler</div>
+	</div>
+</body>
+</html>
